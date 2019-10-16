@@ -53,6 +53,22 @@ class Main {
         System.out.println("Cards on hands:");
         for (Card[] hand : hands) {
             System.out.println(Arrays.toString(hand));
+            int s = 0;
+            int h = 0;
+            int d = 0;
+            int c = 0;
+            for (Card card : hand) {
+                if (card.compareTo(Card.HA) < 0) {
+                    s++;
+                } else if (card.compareTo(Card.DA) < 0) {
+                    h++;
+                } else if (card.compareTo(Card.CA) < 0) {
+                    d++;
+                } else {
+                    c++;
+                }
+            }
+            System.out.println(s + " - " + h + " - " + d + " - " + c);
         }
     }
 
