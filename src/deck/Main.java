@@ -33,6 +33,11 @@ class Main {
         }
     }
 
+    private static void printDeck(Card[] deck) {
+        System.out.println("Your deck:");
+        System.out.println(Arrays.toString(deck));
+    }
+
     private static void cardsToHands(Card[][] hands, Card[] deck) {
         int from = 0;
         int to = CARDS_PER_HAND;
@@ -43,37 +48,32 @@ class Main {
         }
     }
 
-    private static void sortCardsOnHands(Card[][] hands) {
-        for (Card[] card: hands) {
-            Arrays.sort(card);
-        }
-    }
-
     private static void printCardsOnHands(Card[][] hands) {
         System.out.println("Cards on hands:");
         for (Card[] hand : hands) {
             System.out.println(Arrays.toString(hand));
-            int s = 0;
-            int h = 0;
-            int d = 0;
-            int c = 0;
+            int spade = 0;
+            int heart = 0;
+            int diamond = 0;
+            int club = 0;
             for (Card card : hand) {
                 if (card.compareTo(Card.HA) < 0) {
-                    s++;
+                    spade++;
                 } else if (card.compareTo(Card.DA) < 0) {
-                    h++;
+                    heart++;
                 } else if (card.compareTo(Card.CA) < 0) {
-                    d++;
+                    diamond++;
                 } else {
-                    c++;
+                    club++;
                 }
             }
-            System.out.println(s + " - " + h + " - " + d + " - " + c);
+            System.out.println(spade + " - " + heart + " - " + diamond + " - " + club);
         }
     }
 
-    private static void printDeck(Card[] deck) {
-        System.out.println("Your deck:");
-        System.out.println(Arrays.toString(deck));
+    private static void sortCardsOnHands(Card[][] hands) {
+        for (Card[] card: hands) {
+            Arrays.sort(card);
+        }
     }
 }
