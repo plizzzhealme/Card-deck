@@ -10,15 +10,9 @@ class Main {
 
     public static void main(String[] args) {
         Card[] deck = Card.values();
-        printDeck(deck);
-
         shuffle(deck);
-        printDeck(deck);
-
         Card[][] hands = new Card[HANDS][CARDS_PER_HAND];
         cardsToHands(hands, deck);
-        printCardsOnHands(hands);
-
         sortCardsOnHands(hands);
         printCardsOnHands(hands);
     }
@@ -34,7 +28,6 @@ class Main {
     }
 
     private static void printDeck(Card[] deck) {
-        System.out.println("Your deck:");
         System.out.println(Arrays.toString(deck));
     }
 
@@ -48,26 +41,29 @@ class Main {
         }
     }
 
-    private static void printCardsOnHands(Card[][] hands) {
-        System.out.println("Cards on hands:");
-        for (Card[] hand : hands) {
-            System.out.println(Arrays.toString(hand));
-            int spade = 0;
-            int heart = 0;
-            int diamond = 0;
-            int club = 0;
-            for (Card card : hand) {
-                if (card.compareTo(Card.HA) < 0) {
-                    spade++;
-                } else if (card.compareTo(Card.DA) < 0) {
-                    heart++;
-                } else if (card.compareTo(Card.CA) < 0) {
-                    diamond++;
-                } else {
-                    club++;
-                }
+    private static void printHandInfo(Card[] hand) {
+        int spade = 0;
+        int heart = 0;
+        int diamond = 0;
+        int club = 0;
+        for (Card card : hand) {
+            if (card.compareTo(Card.HA) < 0) {
+                spade++;
+            } else if (card.compareTo(Card.DA) < 0) {
+                heart++;
+            } else if (card.compareTo(Card.CA) < 0) {
+                diamond++;
+            } else {
+                club++;
             }
-            System.out.println(spade + " - " + heart + " - " + diamond + " - " + club);
+        }
+        System.out.println(spade + " - " + heart + " - " + diamond + " - " + club);
+    }
+
+    private static void printCardsOnHands(Card[][] hands) {
+        for (Card[] hand : hands) {
+            printDeck(hand);
+            printHandInfo(hand);
         }
     }
 
