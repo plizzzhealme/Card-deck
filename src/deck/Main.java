@@ -3,7 +3,7 @@ package deck;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Main {
+class Main {
 
     private static final int HANDS = 4;
     private static final int CARDS_PER_HAND = 13;
@@ -23,7 +23,7 @@ public class Main {
         printCardsOnHands(hands);
     }
 
-    static void shuffle(Card[] deck) {
+    private static void shuffle(Card[] deck) {
         Random rnd = new Random();
         for (int i = 1; i < deck.length; i++) {
             int j = rnd.nextInt(i);
@@ -33,7 +33,7 @@ public class Main {
         }
     }
 
-    static void cardsToHands(Card[][] hands, Card[] deck) {
+    private static void cardsToHands(Card[][] hands, Card[] deck) {
         int from = 0;
         int to = CARDS_PER_HAND;
         for (int i = 0; i < HANDS; i++) {
@@ -43,21 +43,20 @@ public class Main {
         }
     }
 
-    static void sortCardsOnHands (Card[][] hands) {
-        for (Card[] card:
-             hands) {
+    private static void sortCardsOnHands(Card[][] hands) {
+        for (Card[] card: hands) {
             Arrays.sort(card);
         }
     }
 
-    static void printCardsOnHands(Card[][] hands) {
+    private static void printCardsOnHands(Card[][] hands) {
         System.out.println("Cards on hands:");
         for (Card[] hand : hands) {
             System.out.println(Arrays.toString(hand));
         }
     }
 
-    static void printDeck(Card[] deck) {
+    private static void printDeck(Card[] deck) {
         System.out.println("Your deck:");
         System.out.println(Arrays.toString(deck));
     }
